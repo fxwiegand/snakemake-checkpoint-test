@@ -1,0 +1,4 @@
+.snakemake/
+result.txt
+parts/
+processed/
