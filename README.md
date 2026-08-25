@@ -1,10 +1,14 @@
 # snakemake-checkpoint-test
 
-Minimal datavzrd report to S3, to debug the ProtectedOutputException. Needs conda for the datavzrd wrapper.
+Reproduces a ProtectedOutputException for an S3 directory output whose local cache copy is not writable.
 
 ```bash
-snakemake --sdm conda --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1 --report-after-run --report report.zip
-snakemake --sdm conda --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1 --forcerun make_report --report-after-run --report report.zip
+snakemake --default-storage-provider s3 --default-storage-prefix s3://koesterlab/probe -c1 make_report
+
+cache=.snakemake/storage/s3/koesterlab/probe/results/report
+mkdir -p "$cache" && echo hi > "$cache/index.html" && chmod -R a-w "$cache"
+
+snakemake --default-storage-provider s3 --default-storage-prefix s3://koesterlab/probe -c1 --forcerun make_report
 ```
 
-Run both in the same directory, then send back `cache_probe.log` and any error. Also run `umask` in the same shell.
+The second command raises the ProtectedOutputException.
