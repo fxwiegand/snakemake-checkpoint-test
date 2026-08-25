@@ -1,13 +1,10 @@
 # snakemake-checkpoint-test
 
-Minimal checkpoint workflow for testing with S3 storage.
+Logs local storage-cache permissions to debug a ProtectedOutputException with S3 storage.
 
 ```bash
-pip install snakemake snakemake-storage-plugin-s3
-
-export SNAKEMAKE_STORAGE_S3_ENDPOINT_URL=https://...
-export SNAKEMAKE_STORAGE_S3_ACCESS_KEY=...
-export SNAKEMAKE_STORAGE_S3_SECRET_KEY=...
-
-snakemake --default-storage-provider s3 --default-storage-prefix s3://<bucket>/checkpoint-test -c1
+snakemake --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1
+snakemake --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1 --forcerun make_report
 ```
+
+Run both in the same directory on the shared workspace, then send `probe.log`.

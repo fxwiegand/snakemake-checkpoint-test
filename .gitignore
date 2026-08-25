@@ -1,4 +1,4 @@
+probe.log
 .snakemake/
-result.txt
-parts/
-processed/
+report/
+fs-storage/
