@@ -1,10 +1,10 @@
 # snakemake-checkpoint-test
 
-Logs local storage-cache permissions to debug a ProtectedOutputException with S3 storage.
+Minimal datavzrd report to S3, to debug the ProtectedOutputException. Needs conda for the datavzrd wrapper.
 
 ```bash
-snakemake --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1
-snakemake --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1 --forcerun make_report
+snakemake --sdm conda --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1
+snakemake --sdm conda --default-storage-provider s3 --default-storage-prefix s3://<bucket>/probe -c1 --forcerun make_report
 ```
 
-Run both in the same directory on the shared workspace, then send `probe.log`.
+Send back `cache_probe.log` and any error.

@@ -2,3 +2,6 @@ probe.log
 .snakemake/
 report/
 fs-storage/
+cache_probe.log
+scores.tsv
+results/

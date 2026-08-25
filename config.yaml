@@ -1,0 +1,18 @@
+__use_yte__: true
+
+name: probe
+
+default-view: data
+
+datasets:
+  data:
+    path: ?input.scores
+    separator: "\t"
+
+views:
+  data:
+    dataset: data
+    render-table:
+      columns:
+        value:
+          display-mode: normal
