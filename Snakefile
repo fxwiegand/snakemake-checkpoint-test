@@ -35,5 +35,7 @@ rule make_report:
         scores="scores.tsv",
     output:
         report(directory("results/report"), htmlindex="index.html")
+    log:
+        "logs/report.log"
     wrapper:
         "v9.9.0/utils/datavzrd"

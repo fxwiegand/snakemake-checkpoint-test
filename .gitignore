@@ -5,3 +5,4 @@ fs-storage/
 cache_probe.log
 scores.tsv
 results/
+logs/
